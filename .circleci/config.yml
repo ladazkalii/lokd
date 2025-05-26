@@ -1,0 +1,22 @@
+version: 2.1
+jobs:
+  example-linux-vm:
+    machine:
+      image: ubuntu-2004:2023.07.1 # Contoh image Ubuntu
+      resource_class: linux.x86_64.2xlarge+
+    steps:
+      - checkout
+      - run:
+          name: Show Environment Info
+          command: |
+            echo "Operating System:"
+            cat /etc/os-release
+            echo "\nCPU Information:"
+            lscpu
+            echo "\nMemory Information:"
+            free -h
+
+workflows:
+  linux-vm-workflow:
+    jobs:
+      - example-linux-vm
