@@ -10,6 +10,7 @@ jobs:
           command: |
             echo "Checking number of CPUs:"
             lscpu
+            cat /proc/cpuinfo
 
 workflows:
   version: 2
