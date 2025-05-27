@@ -9,7 +9,7 @@ jobs:
           name: Check Number of CPUs
           command: |
             echo "Checking number of CPUs:"
-            nproc || grep -c ^processor /proc/cpuinfo
+            lscpu
 
 workflows:
   version: 2
