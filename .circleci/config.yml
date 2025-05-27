@@ -3,7 +3,7 @@ jobs:
   example-linux-vm:
     machine:
       image: ubuntu-2004:2023.07.1 # Contoh image Ubuntu
-      resource_class: linux.x86_64.xlarge
+      resource_class: linux.x86_64.large
     steps:
       - checkout
       - run:
