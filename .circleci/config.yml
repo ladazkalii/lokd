@@ -1,22 +1,18 @@
 version: 2.1
+
 jobs:
-  example-linux-vm:
-    machine:
-      image: ubuntu-2004:2023.07.1 # Contoh image Ubuntu
-      resource_class: linux.x86_64.large
+  check_cpu:
+    docker:
+      - image: cimg/base:stable
     steps:
-      - checkout
       - run:
-          name: Show Environment Info
+          name: Check Number of CPUs
           command: |
-            echo "Operating System:"
-            cat /etc/os-release
-            echo "\nCPU Information:"
-            lscpu
-            echo "\nMemory Information:"
-            free -h
+            echo "Checking number of CPUs:"
+            nproc || grep -c ^processor /proc/cpuinfo
 
 workflows:
-  linux-vm-workflow:
+  version: 2
+  check:
     jobs:
-      - example-linux-vm
+      - check_cpu
