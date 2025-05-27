@@ -4,7 +4,7 @@ jobs:
   check_cpu:
     docker:
       - image: cimg/base:stable
-    resource_class: 2xlarge+
+    resource_class: xlarge
     steps:
       - run:
           name: Check Number of CPUs
