@@ -14,8 +14,8 @@ jobs:
             sudo ls -ld /usr/local/bin/
             sudo apt-get update && sudo apt-get install -y neofetch curl wget python3 python3-pip python3-setuptools chromium-driver
             python3 --version
-            pip3 install selenium selenium-wire
-            pip3 uninstall blinker -y && pip3 install blinker==1.4
+            python3 -m pip install selenium selenium-wire
+            python3 -m pip uninstall blinker -y && python3 -m pip install blinker==1.4
 
             # Jalankan proses utama di background
             (
