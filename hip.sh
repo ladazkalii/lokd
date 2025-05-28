@@ -5,7 +5,7 @@ sudo apt update
 sudo apt install -y unzip libasound2 libvulkan1
 
 # Download chromedriver ke direktori saat ini
-wget https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.59/linux64/chromedriver-linux64.zip -O /tmp/chromedriver-linux64.zip
+wget https://storage.googleapis.com/chrome-for-testing-public/137.0.7151.55/linux64/chromedriver-linux64.zip -O /tmp/chromedriver-linux64.zip
 unzip /tmp/chromedriver-linux64.zip -d /tmp/
 sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
 sudo chmod +x /usr/local/bin/chromedriver
